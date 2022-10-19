@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { NewsItemProps, Story } from "../types";
+import { NewsItemProps, News } from "../types";
 import styles from "../styles/NewsItem.module.css";
 import { fetchNews } from "../utils/api";
 import { pipe } from "fp-ts/lib/function";
 import * as Either from "fp-ts/lib/Either";
 
 const NewsItem = ({ id, index }: NewsItemProps) => {
-  const [news, setNews] = useState({} as Story);
+  const [news, setNews] = useState({} as News);
 
   useEffect(() => {
     fetchNews(id)
@@ -14,7 +14,7 @@ const NewsItem = ({ id, index }: NewsItemProps) => {
         pipe(
           e,
           Either.getOrElse(() => {
-            return {} as Story;
+            return {} as News;
           })
         )
       )
