@@ -1,4 +1,4 @@
-export type Story = {
+export type News = {
   id: number;
   by: string;
   title: string;
