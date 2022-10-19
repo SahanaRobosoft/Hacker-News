@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BASE_API_URL } from "../constants";
-import { Story } from "../types";
+import { News } from "../types";
 import { pipe } from "fp-ts/lib/function";
 import * as TE from "fp-ts/lib/TaskEither";
 
@@ -17,7 +17,7 @@ export const fetchTopNewsId = async () => {
 export const fetchNews = async (id: number) => {
   return await pipe(
     TE.tryCatch(
-      () => axios.get<Story>(`${BASE_API_URL}/item/${id}.json`),
+      () => axios.get<News>(`${BASE_API_URL}/item/${id}.json`),
       (response) => new Error(`${response}`)
     ),
     TE.map((response) => response.data)
