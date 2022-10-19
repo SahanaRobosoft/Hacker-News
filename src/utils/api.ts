@@ -22,5 +22,4 @@ export const fetchNews = async (id: number) => {
     ),
     TE.map((response) => response.data)
   )();
-  // const storyData = response.data;
 };
